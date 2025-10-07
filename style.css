@@ -1,0 +1,162 @@
+/* ====== General Page Styling ====== */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #121212;
+  color: #e0e0e0;
+  line-height: 1.6;
+  padding: 20px;
+}
+
+.container {
+  max-width: 700px;
+  margin: 0 auto;
+  background-color: #1e1e1e;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+h1 {
+  text-align: center;
+  color: #4da3ff;
+}
+
+/* ====== Comment Form ====== */
+#commentForm textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #444;
+  border-radius: 4px;
+  resize: vertical;
+  min-height: 80px;
+  margin-bottom: 10px;
+  background-color: #222;
+  color: #e0e0e0;
+}
+
+#commentForm button {
+  width: 100%;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#commentForm button:hover {
+  background-color: #0056b3;
+}
+
+/* ====== Comments & Replies ====== */
+.comment-box,
+.reply-box {
+  position: relative;
+  border: 2px solid #4da3ff;
+  padding: 10px 12px 35px 12px;
+  border-radius: 6px;
+  margin-top: 12px;
+  background-color: #181818;
+}
+
+.reply-box {
+  margin-left: 40px;
+}
+
+.comment-box p,
+.reply-box p {
+  margin: 0 0 8px 0;
+  font-size: 15px;
+  color: #f5f5f5;
+}
+
+/* ====== Reaction and Reply Controls ====== */
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.reaction-options {
+  position: absolute;
+  right: 10px;
+  bottom: 8px;
+  display: flex;
+  gap: 6px;
+}
+
+.reaction {
+  cursor: pointer;
+  font-size: 18px;
+  transition: transform 0.2s;
+  user-select: none;
+}
+
+.reaction:hover {
+  transform: scale(1.25);
+}
+
+.reply-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  color: #4da3ff;
+  transition: color 0.3s;
+}
+
+.reply-btn:hover {
+  color: #1e90ff;
+}
+
+/* Replies */
+.replies {
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+/* Reply Form */
+.reply-form {
+  margin-top: 10px;
+  background-color: #202020;
+  border: 1px solid #333;
+  border-radius: 6px;
+  padding: 10px;
+}
+
+.reply-form textarea {
+  width: 100%;
+  border: 1px solid #555;
+  border-radius: 4px;
+  resize: vertical;
+  min-height: 60px;
+  padding: 6px;
+  background-color: #2a2a2a;
+  color: #e0e0e0;
+}
+
+.reply-form button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  margin-top: 6px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.reply-form button:hover {
+  background-color: #0056b3;
+}
+
+/* Empty message */
+#commentsContainer p {
+  text-align: center;
+  color: #bbb;
+  font-style: italic;
+  margin-top: 20px;
+}
