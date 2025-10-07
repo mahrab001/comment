@@ -122,7 +122,7 @@ function createCommentElement(comment, isReply = false, parentId = null) {
 
     span.addEventListener("click", (e) => {
       e.preventDefault();
-      e.stopPropagation(); // ✅ Prevents reply box toggle
+      e.stopPropagation(); // ✅ Prevents reply box toggle when clicking a reaction
 
       const path = parentId
         ? `comments/${parentId}/replies/${comment.id}/reactions/${emoji}`
@@ -160,7 +160,7 @@ function createCommentElement(comment, isReply = false, parentId = null) {
   // Toggle reply form
   replyBtn.addEventListener("click", (e) => {
     e.preventDefault();
-    e.stopPropagation();
+    e.stopPropagation(); // Prevents this click from propagating to parent comment
     replyForm.style.display =
       replyForm.style.display === "none" ? "block" : "none";
   });
@@ -172,13 +172,14 @@ function createCommentElement(comment, isReply = false, parentId = null) {
     if (!replyText) return;
 
     const reply = {
-      id: Date.now().toString(),
+      id: Date.now().toString(), // Firebase push creates unique IDs, so this 'id' isn't strictly needed for the path but useful for local rendering
       text: replyText,
       timestamp: Date.now(),
-      replies: [],
+      replies: [], // Replies can also have replies
       reactions: {},
     };
 
+    // Use push to add a new reply under the parent's replies
     const repliesRef = ref(db, `comments/${comment.id}/replies`);
     push(repliesRef, reply);
 
@@ -191,6 +192,7 @@ function createCommentElement(comment, isReply = false, parentId = null) {
     const repliesDiv = document.createElement("div");
     repliesDiv.classList.add("replies");
 
+    // Convert replies object to array to iterate
     Object.entries(comment.replies).forEach(([replyId, reply]) => {
       repliesDiv.appendChild(
         createCommentElement({ id: replyId, ...reply }, true, comment.id)
